@@ -6,5 +6,5 @@ class StringHelper:
 
 
     @classmethod
-    def first_string(cls, text, separator):
+    def first_substring(cls, text, separator):
         return text.split(separator)[0]

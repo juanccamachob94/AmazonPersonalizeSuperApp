@@ -10,6 +10,7 @@ class InteractionsLambda(BaseLambda):
     def create(cls, interaction_data):
         InteractionsService.perform(
             interaction_data['user_id'],
-            interaction_data['item_id']
+            interaction_data['item_id'],
+            interaction_data['article_id']
         )
         return cls.build_http_response('registered', 201)

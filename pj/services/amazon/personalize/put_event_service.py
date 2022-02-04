@@ -12,7 +12,7 @@ class PutEventService(PutService):
         amazon_personalize_default_solution = \
             AmazonPersonalizeSolutionsFactory.get_instance('personalize-events')
         client = amazon_personalize_default_solution.get_client()
-        section_type = StringHelper.first_string(interaction.get_item_id(), '|')
+        section_type = StringHelper.first_substring(interaction.get_item_id(), '|')
         client.put_events(
             eventList=[{
                 'eventId': str(interaction.get_timestamp()),
@@ -32,4 +32,4 @@ class PutEventService(PutService):
 
     @classmethod
     def _build_section_type(cls, interaction):
-        return StringHelper.first_string(interaction.get_item_id(), '|')
+        return StringHelper.first_substring(interaction.get_item_id(), '|')

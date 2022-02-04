@@ -17,4 +17,4 @@ class UrlHelper:
     @classmethod
     def name(cls, url):
         name_and_extension = cls.name_with_extension(url)
-        return StringHelper.first_string(name_and_extension, '.')
+        return StringHelper.first_substring(name_and_extension, '.')

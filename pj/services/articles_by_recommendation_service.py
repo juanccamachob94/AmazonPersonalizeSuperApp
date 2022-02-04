@@ -7,4 +7,4 @@ class ArticlesByRecommendationService:
     def find_all_by_category(cls, recommendation, _last_evaluated_key, data_limit):
         # _last_evaluated_key is used by DynamoDB
         return DAOFactory.perform('open-search', OPEN_SEARCH_ENTITY_NAMES['Article']) \
-            .find_all({ 'SECTION': recommendation['itemId'].split('|')[0] }, data_limit)
+            .find_all({ 'section': recommendation['itemId'].split('|')[0] }, data_limit)

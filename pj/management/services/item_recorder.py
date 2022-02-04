@@ -9,5 +9,5 @@ class ItemRecorder:
         item = Item.build({ 'item_id': f'{article_category}|{site}', 'site': site })
         itemsDAO = DAOFactory.perform('open-search', OPEN_SEARCH_ENTITY_NAMES['Item'])
         if not itemsDAO.find(item.to_uniq_dict()):
-            itemsDAO.create(item, False)
+            itemsDAO.create(item)
             PutItemService.perform(item)

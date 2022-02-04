@@ -10,20 +10,18 @@ class OpenSearchManager(DBManager):
         return self.db_manager_client.get_client() \
             .indices.create(self.db_manager_client.get_table_name(), body=entity_body)
 
-    def _build_search_url(self, sql_parameters):
-        return self.db_manager_client.get_https_url() \
-            + f'/{self.db_manager_client.get_table_name()}/_search?q={sql_parameters}'
+
+    def find_all(self, model_attributes_dict, limit):
+        return {
+            'Items': list(map(
+                lambda hit: hit.get('_source'),
+                self.__search(model_attributes_dict, limit).get('hits', {}).get('hits')
+            ))
+        }
 
 
-    def find_all(self, sql_parameters):
-        hits = requests.get(self._build_search_url(sql_parameters),
-            auth=self.db_manager_client.get_awsauth()).json().get('hits', {}).get('hits', [])
-        return { 'Items': list(map(lambda hit: hit.get('_source'), hits)) }
-
-
-    def find(self, sql_parameters):
-        items = self.find_all(sql_parameters)['Items']
-        return items[0] if items else None
+    def find(self, model_attributes_dict):
+        return self.find_all(model_attributes_dict, 1)
 
 
     def create(self, id, body):
@@ -39,3 +37,9 @@ class OpenSearchManager(DBManager):
     def delete(self, id):
         return self.db_manager_client.get_client().indices \
             .delete(index=self.db_manager_client.get_table_name(), id=id)
+
+
+    def __search(self, model_attributes_dict, limit):
+        body = { 'size': limit, 'query': { 'match': model_attributes_dict } }
+        return self.db_manager_client.get_client() \
+            .search(body=body, index=self.db_manager_client.get_table_name())

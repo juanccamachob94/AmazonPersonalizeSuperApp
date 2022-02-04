@@ -9,6 +9,7 @@ class AmazonPersonalizeSolution:
         keys_type = self.__class__.KEYS_TYPE
         self.amazon_client = amazon_client
         self.tracking_id = os.environ[f'AWS_DEFAULT_PERSONALIZE_{keys_type}_TRACKING_ID']
+        self.campaign_arn = os.environ[f'AWS_DEFAULT_PERSONALIZE_{keys_type}_CAMPAIGN_ARN']
         self.user_dataset_arn = os.environ[f'AWS_DEFAULT_PERSONALIZE_{keys_type}_USER_DATASET_ARN']
         self.item_dataset_arn = os.environ[f'AWS_DEFAULT_PERSONALIZE_{keys_type}_ITEM_DATASET_ARN']
 

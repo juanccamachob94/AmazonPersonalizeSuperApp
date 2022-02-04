@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     return ItemRecommenderLambda.find_items_data_list(event)
 
 
-class ItemRecommenderLambda(BaseLambda):
+class ArticlesRecommenderLambda(BaseLambda):
     @classmethod
     def find_items_data_list(cls, event):
         return cls.build_http_response(

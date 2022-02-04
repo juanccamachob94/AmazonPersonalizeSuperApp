@@ -4,6 +4,7 @@ from pj.values.db_entity_names import DYNAMO_ENTITY_NAMES
 
 class DynamoManagerFactory:
     VALID_INSTANCE_TYPES = [
+        DYNAMO_ENTITY_NAMES['ArticleInteraction'],
         DYNAMO_ENTITY_NAMES['Item'],
         DYNAMO_ENTITY_NAMES['Interaction'],
         DYNAMO_ENTITY_NAMES['SubItem'],

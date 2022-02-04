@@ -5,8 +5,12 @@ class User(TimestampModel):
     @classmethod
     def build(cls, dict_user_attributes):
         user = cls()
-        user.set_user_id(dict_user_attributes.get('user_id'))
-        user.set_device_id(dict_user_attributes.get('device_id'))
+        device_id = dict_user_attributes.get('device_id')
+        user_id = dict_user_attributes.get('user_id')
+        if user_id:
+            user.set_user_id(str(user_id))
+        if device_id:
+            user.set_device_id(int(device_id))
         return user
 
 

@@ -19,7 +19,6 @@ class SitemapContentItemProcessor:
             print('processing...', article.get_identifier())
             if cls.__create_article(article):
                 ItemRecorder.perform(article.get_section(), site)
-                # only SuperApp
                 SubItemRecorder.perform(article)
                 print('Ok!')
             else:

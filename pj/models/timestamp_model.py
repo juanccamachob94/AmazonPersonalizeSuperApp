@@ -3,7 +3,7 @@ from pj.helpers.date_helper import DateHelper
 
 class TimestampModel(BaseModel):
     def __init__(self):
-        self.timestamp = str(DateHelper.round_time())
+        self.timestamp = DateHelper.round_time()
 
 
     def get_timestamp(self):

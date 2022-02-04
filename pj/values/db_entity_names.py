@@ -1,4 +1,5 @@
 CSV_ENTITY_NAMES = {
+    'ArticleInteraction': 'recomendedArticleInteractionssBAZ',
     'Article': 'recomendedArticlesBAZ',
     'Interaction': 'recomendedInteractionsBAZ',
     'Item': 'recomendedItemsBAZ1',
@@ -7,6 +8,7 @@ CSV_ENTITY_NAMES = {
 }
 
 DYNAMO_ENTITY_NAMES = {
+    'ArticleInteraction': 'superapp_article_interactions',
     'Article': 'superapp_articles',
     'Interaction': 'superapp_interactions',
     'Item': 'superapp_items',
@@ -15,6 +17,7 @@ DYNAMO_ENTITY_NAMES = {
 }
 
 OPEN_SEARCH_ENTITY_NAMES = {
+    'ArticleInteraction': 'superapp_article_interactions',
     'Article': 'superapp_articles',
     'Interaction': 'superapp_interactions',
     'Item': 'superapp_items',

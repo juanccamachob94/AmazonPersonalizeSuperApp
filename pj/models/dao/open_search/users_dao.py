@@ -8,5 +8,6 @@ class UsersDAO(OpenSearchDAO):
     def create_entity(self):
         return super().create_entity(User())
 
+
     def create(self, model, _validate_repeated=False):
         return super().create(model)

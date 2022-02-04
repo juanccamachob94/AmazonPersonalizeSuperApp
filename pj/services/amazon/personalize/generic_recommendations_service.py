@@ -3,6 +3,8 @@ import pj.algoritia.amazon.personalize.recommendations_service
 from pj.helpers.string_helper import StringHelper
 
 class GenericRecommendationsService:
+    ALGORITIA_ALGORITHM = 'algoritia'
+    DEFAULT_ALGORITHM = 'default'
     DEFAULT_ERROR_FACTOR = 4 # cuadruple of data limit value
 
     @classmethod
@@ -34,18 +36,22 @@ class GenericRecommendationsService:
 
 
     def __perform1(self):
-        return { "default": self.__get_default_recommendations() }
+        res = {}
+        res[self.__class__.DEFAULT_ALGORITHM] = self.__get_default_recommendations()
+        return res
 
 
     def __perform2(self):
-        return { "algoritia": self.__get_algoritia_recommendations() }
+        res = {}
+        res[self.__class__.ALGORITIA_ALGORITHM] = self.__get_algoritia_recommendations()
+        return res
 
 
     def __default_perform(self):
-        return {
-            "default": self.__get_default_recommendations(),
-            "algoritia": self.__get_algoritia_recommendations()
-        }
+        res = {}
+        res[self.__class__.DEFAULT_ALGORITHM] = self.__get_default_recommendations()
+        res[self.__class__.ALGORITIA_ALGORITHM] = self.__get_algoritia_recommendations()
+        return res
 
 
     def __rescue_perform(self):
@@ -91,7 +97,7 @@ class GenericRecommendationsService:
                             * self.__class__.DEFAULT_ERROR_FACTOR
                     )['itemList']
                 )
-            )
+            )[:self.item_recommender.get_default_data_limit()]
         return self.default_recommendations
 
 
@@ -109,5 +115,7 @@ class GenericRecommendationsService:
 
     @classmethod
     def __is_valid_recommendation(self, recommendation):
-        site = StringHelper.last_substring(recommendation.get('itemId', ''), '|').lower()
-        return site in ['adn40', 'superapp']
+        item_id = recommendation.get('itemId', '')
+        section = StringHelper.first_substring(item_id, '|')
+        site = StringHelper.last_substring(item_id, '|')
+        return site == 'APP SuperApp' and section != 'Al Momento'

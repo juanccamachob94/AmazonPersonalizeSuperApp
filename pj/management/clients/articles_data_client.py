@@ -5,7 +5,7 @@ class ArticlesDataClient:
     @classmethod
     def perform(cls):
         lastmod_requests = cls.__build_lastmod_requests() # change to array
-        CentralizedDataGenerator.perform('APP SuperApp', \
+        CentralizedDataGenerator.perform('APP_SuperApp', \
             'https://www.tvazteca.com/superapp/sappcontentindexjson', lastmod_requests)
         return lastmod_requests
 

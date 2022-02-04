@@ -4,6 +4,7 @@ from pj.values.db_entity_names import OPEN_SEARCH_ENTITY_NAMES
 
 class OpenSearchManagerFactory:
     VALID_INSTANCE_TYPES = [
+        OPEN_SEARCH_ENTITY_NAMES['ArticleInteraction'],
         OPEN_SEARCH_ENTITY_NAMES['Item'],
         OPEN_SEARCH_ENTITY_NAMES['Interaction'],
         OPEN_SEARCH_ENTITY_NAMES['SubItem'],

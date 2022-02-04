@@ -9,19 +9,11 @@ class OpenSearchDAO(BaseDAO):
 
 
     def find_all(self, model_attributes_dict, limit=10):
-        return self.db_manager.find_all(self._sql_parameters(model_attributes_dict, limit))
+        return self.db_manager.find_all(model_attributes_dict, limit)
 
 
-    def find(self, model_attributes_dict, limit=10):
-        return self.db_manager.find(self._sql_parameters(model_attributes_dict, limit))
-
-
-    def _sql_parameters(self, dict_attributes, limit):
-        keys_values = []
-        for dict_attibute in dict_attributes:
-            keys_values.append(f'{dict_attibute.lower()}:{dict_attributes[dict_attibute]}')
-        url_keys_values = '&'.join(keys_values)
-        return f'{url_keys_values}&size={limit}'
+    def find(self, model_attributes_dict):
+        return self.db_manager.find(model_attributes_dict)
 
 
     def create_entity(self, model):

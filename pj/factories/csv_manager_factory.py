@@ -5,6 +5,7 @@ from pj.values.db_entity_names import CSV_ENTITY_NAMES
 class CSVManagerFactory:
     SUFFIX_FILE = '.csv'
     VALID_INSTANCE_TYPES = [
+        CSV_ENTITY_NAMES['ArticleInteraction'],
         CSV_ENTITY_NAMES['Item'],
         CSV_ENTITY_NAMES['Interaction'],
         CSV_ENTITY_NAMES['SubItem'],

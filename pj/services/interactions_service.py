@@ -6,8 +6,8 @@ from pj.values.db_entity_names import OPEN_SEARCH_ENTITY_NAMES
 
 class InteractionsService:
     @classmethod
-    def perform(cls, user_id, item_id):
+    def perform(cls, user_id, item_id, article_id):
         interaction = Interaction.build({ 'user_id': user_id, 'item_id': item_id })
         DAOFactory.perform('open-search', OPEN_SEARCH_ENTITY_NAMES['Interaction']) \
-            .create(interaction)
+            .create(interaction, article_id)
         PutEventService.perform(interaction)

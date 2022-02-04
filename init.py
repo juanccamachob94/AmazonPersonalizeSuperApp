@@ -30,6 +30,6 @@ def main(option):
     elif option == 5:
         InteractionsClient.perform()
     elif option == 6:
-        OpenSearchClient.perform('Interaction', 'up')
+        OpenSearchClient.perform('User', 'up')
 
 main(1)

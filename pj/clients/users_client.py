@@ -5,7 +5,6 @@ from pj.models.user import User
 class UsersClient:
     @classmethod
     def perform(cls):
-        print('Users!!')
         user_id = 350
         device_id = 1
         DAOFactory.perform('csv', CSV_ENTITY_NAMES['User']) \
