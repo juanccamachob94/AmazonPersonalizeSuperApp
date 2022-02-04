@@ -1,0 +1,18 @@
+pip3 install boto3
+pip3 uninstall boto3
+
+
+pip3 install bs4
+pip3 install python-dotenv
+pip3 install pytz
+pip3 install requests
+pip3 install xmltodict
+
+pip3 uninstall python-dotenv
+pip3 uninstall requests
+pip3 uninstall xmltodict
+pip3 uninstall bs4
+pip3 uninstall pytz
+pip3 install python-slugify
+
+pip3 install -r pip.txt -t .
