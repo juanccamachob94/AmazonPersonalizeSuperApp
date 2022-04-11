@@ -1,8 +1,11 @@
 # this package is included to access to extenal file resource
 import ssl
 import sys
+import locale
 
 sys.path.append('./')
+
+locale.setlocale(locale.LC_ALL, 'es_MX.UTF-8')
 
 from pj.clients.interactions_client import InteractionsClient
 from pj.clients.items_client import ItemsClient
@@ -28,6 +31,5 @@ def main(option):
         InteractionsClient.perform()
     elif option == 6:
         OpenSearchClient.perform('Interaction', 'up')
-
 
 main(1)

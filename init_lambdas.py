@@ -1,7 +1,10 @@
 import sys
 import ssl
+import locale
 
 sys.path.append('./')
+locale.setlocale(locale.LC_ALL, 'es_MX.UTF-8')
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 from pj.lambdas import users_lambda

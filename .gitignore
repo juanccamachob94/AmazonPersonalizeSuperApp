@@ -200,3 +200,11 @@ tqdm/
 
 # new installation
 charset_normalizer-2.0.11.dist-info/
+
+# testing
+beautifulsoup4-4.11.1.dist-info/
+charset_normalizer-2.0.12.dist-info/
+numpy.libs/
+soupsieve-2.3.2.dist-info/
+tqdm-4.64.0.dist-info/
+urllib3-1.26.9.dist-info/
