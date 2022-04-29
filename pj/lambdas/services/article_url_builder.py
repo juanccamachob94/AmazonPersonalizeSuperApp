@@ -12,5 +12,5 @@ class ArticleUrlBuilder:
         return f'{cls.DOMAIN}{slug_category}/{slug_title}.json'
 
     @classmethod
-    def __sanitized_slug(string):
+    def __sanitized_slug(cls, string):
         return slugify(string.replace('.', ''))
