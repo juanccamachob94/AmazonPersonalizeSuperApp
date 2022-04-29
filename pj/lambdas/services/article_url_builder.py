@@ -6,7 +6,11 @@ class ArticleUrlBuilder:
 
     @classmethod
     def perform(cls, article):
-        slug_title = slugify(article.get_title())
+        slug_title = cls.__sanitized_slug(article.get_title())
         # year = item_dict['publication_date'][0:4]
-        slug_category = slugify(article.get_category().lower())
+        slug_category = cls.__sanitized_slug(article.get_category())
         return f'{cls.DOMAIN}{slug_category}/{slug_title}.json'
+
+    @classmethod
+    def __sanitized_slug(string):
+        return slugify(string.replace('.', ''))
